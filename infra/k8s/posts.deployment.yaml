@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
         - name: posts-api
-          image: 'PENDING-IMAGE-TO-BE-PUSHED'
+          image: maxrngl121/ms-basic-example-posts:latest
