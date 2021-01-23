@@ -14,9 +14,9 @@ app.post('/events', (req, res, next) => {
   events.push(event);
 
   axios.post(`http://${process.env.POSTS_ADDRESS}/events`, { event }); // POSTS SERVICE
-  axios.post(`http://localhost:4001/events`, { event }); // COMMENTS SERVICE
-  axios.post(`http://localhost:4002/events`, { event }); // QUERY SERVICE
-  axios.post(`http://localhost:4003/events`, { event }); // MODERATION SERVICE
+  axios.post(`http://${process.env.COMMENTS_ADDRESS}/events`, { event }); // COMMENTS SERVICE
+  axios.post(`http://${process.env.QUERY_ADDRESS}/events`, { event }); // QUERY SERVICE
+  axios.post(`http://${process.env.MODERATION_ADDRESS}/events`, { event }); // MODERATION SERVICE
 
   res.status(201).json({ status: 'Ok' });
 });

@@ -31,7 +31,7 @@ app.post('/posts/:id/comments', async (req, res) => {
   commentsByPostId[id] = comments;
 
   // EMMIT EVENT TO EVENT BUS
-  await axios.post('http://localhost:4005/events', {
+  await axios.post(`http://${process.env.EVENT_BUS_ADDRESS}/events`, {
     event: {
       type: 'CommentCreated',
       comment: { id: commentId, content },
@@ -55,7 +55,8 @@ app.post('/events', async (req, res, next) => {
     const comment = comments.find(comment => comment.id === id);
     comment.status = status;
 
-    await axios.post('http://localhost:4005/events', {
+    // EMMIT EVENT TO EVENT BUS
+    await axios.post(`http://${process.env.EVENT_BUS_ADDRESS}/events`, {
       event: {
         type: 'CommentUpdated',
         data: { id, postId, content, status }

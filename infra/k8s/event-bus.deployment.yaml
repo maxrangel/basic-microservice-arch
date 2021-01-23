@@ -28,7 +28,13 @@ spec:
     spec:
       containers:
         - name: event-bus
-          image: maxrngl121/ms-basic-example-event-bus:2
+          image: maxrngl121/ms-basic-example-event-bus:3
           env:
             - name: POSTS_ADDRESS
               value: "posts-clusterip-service:4000"
+            - name: COMMENTS_ADDRESS
+              value: "comments-clusterip-service:4001"
+            - name: QUERY_ADDRESS
+              value: "query-clusterip-service:4002"
+            - name: MODERATION_ADDRESS
+              value: "moderation-clusterip-service:4003"
