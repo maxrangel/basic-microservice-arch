@@ -25,7 +25,7 @@ app.post('/posts', async (req, res) => {
   posts[id] = { title, id };
 
   // EMMIT EVENT TO EVENT BUS
-  await axios.post('http://localhost:4005/events', {
+  await axios.post(`http://${process.env.EVENT_BUS_ADDRESS}/events`, {
     event: {
       type: 'PostCreated',
       post: { title, id }
